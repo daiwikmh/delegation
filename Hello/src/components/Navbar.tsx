@@ -22,7 +22,7 @@ export default function Navbar() {
             <div className="flex items-center">
               <div className="h-12 w-12 bg-yellow-500 border-4 border-black rotate-12"></div>
               <div className="h-12 w-12 bg-blue-600 border-4 border-black -ml-6 -rotate-12"></div>
-              <span className="font-black text-2xl tracking-tighter ml-4 text-black">BAUHAUS.BRUTAL</span>
+              <span className="font-black text-2xl tracking-tighter ml-4 text-black">GASLESS DEX</span>
             </div>
           </div>
 

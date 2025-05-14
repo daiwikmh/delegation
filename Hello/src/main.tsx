@@ -7,17 +7,16 @@ import { http, WagmiProvider, createConfig } from "wagmi";
 import { mainnet, linea, lineaSepolia, sepolia } from "wagmi/chains";
 import { metaMask } from "wagmi/connectors";
 import "./index.css";
+import { AppProvider } from "./providers/AppProvider";
 
 
 
 const config = createConfig({
   ssr: true, // Make sure to enable this for server-side rendering (SSR) applications.
-  chains: [mainnet, linea, lineaSepolia, sepolia],
+  chains: [sepolia],
   connectors: [metaMask()],
   transports: {
-    [mainnet.id]: http(),
-    [linea.id]: http(),
-    [lineaSepolia.id]: http(),
+    
     [sepolia.id]: http(),
 
   },
@@ -31,9 +30,11 @@ createRoot(document.getElementById("root")!).render(
   <StrictMode>
  <WagmiProvider config={config}>
  <QueryClientProvider client={queryClient}>   
-   <BrowserRouter>
+ <AppProvider>
+
       <App />
-      </BrowserRouter>
+      </AppProvider>
+
       </QueryClientProvider>
       </WagmiProvider>
   </StrictMode>

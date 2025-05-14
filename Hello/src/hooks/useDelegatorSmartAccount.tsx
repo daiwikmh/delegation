@@ -6,9 +6,9 @@ import {
 import { useEffect, useState } from "react";
 import { useAccount, usePublicClient, useWalletClient } from "wagmi";
 
-export const smartAccount = null; // This will be initialized in the hook
-
-export default function useDelegatorSmartAccount() {
+export default function useDelegatorSmartAccount(): {
+  smartAccount: MetaMaskSmartAccount | null;
+} {
   const { address } = useAccount();
   const publicClient = usePublicClient();
   const { data: walletClient } = useWalletClient();
@@ -21,7 +21,7 @@ export default function useDelegatorSmartAccount() {
 
     console.log("Creating smart account");
 
-    toMetaMaskSmartAccount({
+   toMetaMaskSmartAccount({
       client: publicClient,
       implementation: Implementation.Hybrid,
       deployParams: [address, [], [], []],

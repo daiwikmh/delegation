@@ -14,6 +14,8 @@ export const GatorProvider = ({ children }: { children: React.ReactNode }) => {
     const privateKey = generatePrivateKey();
     setDelegateWallet(privateKey);
   }, []);
+  console.log(generateDelegateWallet)
+  console.log(delegateWallet)
 
   return (
     <GatorContext.Provider value={{ delegateWallet, generateDelegateWallet }}>

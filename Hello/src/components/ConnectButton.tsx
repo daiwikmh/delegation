@@ -25,7 +25,7 @@ export default function ConnectButton() {
           onClick={() => connect({ connector })}
           key={connector.id}
         >
-          Connect Metamaskth
+          Connect Metamask
         </Button>
       ))}
     </div>

@@ -11,7 +11,10 @@ import { useGatorContext } from "@/hooks/useGatorContext";
 export default function useDelegateSmartAccount() {
   const { delegateWallet } = useGatorContext();
   const publicClient = usePublicClient();
-  const [smartAccount, setSmartAccount] = useState<MetaMaskSmartAccount | null>(null);
+
+  const [smartAccount, setSmartAccount] = useState<MetaMaskSmartAccount | null>(
+    null
+  );
 
   useEffect(() => {
     console.log(delegateWallet);
@@ -26,12 +29,10 @@ export default function useDelegateSmartAccount() {
       deployParams: [account.address, [], [], []],
       deploySalt: "0x",
       signatory: { account },
-    }).then((account) => {
-      console.log(account);
-      setSmartAccount(account);
+    }).then((smartAccount) => {
+      setSmartAccount(smartAccount);
     });
   }, [delegateWallet, publicClient]);
-  console.log(smartAccount);
 
   return { smartAccount };
 }

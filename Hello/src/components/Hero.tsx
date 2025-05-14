@@ -1,17 +1,12 @@
 import DeployDelegatorButton from "./DeployDelegatorButton";
+
+import useDelegatorSmartAccount from "@/hooks/useDelegatorSmartAccount";
 import CreateDelegateButton from "./CreateDelegateButton";
 import CreateDelegationButton from "./CreateDelegationButton";
-import { useStepContext } from "@/hooks/useStepContext";
-import useDelegateSmartAccount from "@/hooks/useDelegateSmartAccount";
-import useDelegatorSmartAccount from "@/hooks/useDelegatorSmartAccount";
-import SmartAccount from "./SmartAccount";
-import RedeemPermission from "./RedeemDelegationButton";
-import { useState } from "react";
+import RedeemDelegationButton from "./RedeemDelegationButton";
 
 export default function Hero() {
-  const { step } = useStepContext();
   const { smartAccount } = useDelegatorSmartAccount();
-  const [grantedPermissions, setGrantedPermissions] = useState<any[]>([]);
 
 
 
@@ -42,7 +37,16 @@ export default function Hero() {
             <div className="transform hover:scale-105 transition-transform">
               <DeployDelegatorButton />
             </div>
-            
+            <div className="max-w-2xl">
+                <p className="text-block mb-4 font-mono">
+                  The MetaMask smart contract account that receives the delegation.
+                  Initially this will be counterfactual (not deployed on-chain), until
+                  it is deployed by submitting a user operation
+                </p>
+                <div className="transform hover:scale-105 transition-transform">
+                <CreateDelegateButton/>
+                </div>
+              </div>
               <div className="max-w-2xl">
                 <p className="text-block mb-4 font-mono">
                   The MetaMask smart contract account that receives the delegation.
@@ -50,7 +54,7 @@ export default function Hero() {
                   it is deployed by submitting a user operation
                 </p>
                 <div className="transform hover:scale-105 transition-transform">
-                <SmartAccount onPermissionsGranted={setGrantedPermissions} />
+                <CreateDelegationButton/>
                 </div>
               </div>
             
@@ -66,7 +70,7 @@ export default function Hero() {
                   the delegator can specify a caveats array in the delegation.
                 </p>
                 <div className="transform hover:scale-105 transition-transform">
-                <RedeemPermission permissionData={{ permissions: grantedPermissions  }} />
+                <RedeemDelegationButton />
                 </div>
               </div>
          
